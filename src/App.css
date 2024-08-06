@@ -1,0 +1,16 @@
+/* COMMON STYLES!!!!!! */
+
+.btn{
+  max-width: 123px;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--White);
+  background-color:var(--Marine-blue);
+  border: none;
+  border-radius: .64rem;
+
+
+}

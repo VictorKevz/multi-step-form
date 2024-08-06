@@ -1,0 +1,64 @@
+.reg-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.reg-container{
+    max-width: 940px;
+    width: 100%;
+    min-height: 600px;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: rgb(246, 246, 246);
+    padding: 1.6rem 10rem 1.6rem 1.6rem;
+}
+.header-container{
+    max-width: 274px;
+    width: 100%;
+    min-height: 568px;
+    background-image: url("../../assets/images/bg-sidebar-desktop.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 3.8rem;
+    padding-left: 1.6rem;
+}
+.steps-container,.step-info{
+    display: flex;
+    flex-direction: column;
+}
+.steps-container{
+    gap: 3rem;
+}
+.step-item,.step-num{
+    display: flex;
+    align-items: center;
+}
+.step-item{
+    gap: 1.5rem;
+}
+.step-num{
+justify-content: center;
+border: none;
+width: 3.5rem;
+height: 3.5rem;
+border-radius: 50%;
+border: 1px solid white;
+}
+.active-step{
+    background-color: var(--Light-blue);
+    color: var(--Marine-blue);
+}
+.step-info{
+ gap: .5rem;   
+}
+.step{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+.step-title{
+    font-weight: 500;
+}
