@@ -1,0 +1,77 @@
+
+
+.field.step3{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+.service-item{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 81px;
+    border: 1px solid var(--Light-gray);
+    border-radius: 1rem;
+    padding: 0 2.2rem;
+}
+.box-info-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+/* Custom Checkbox */
+.custom-checkbox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  /* Hide the default checkbox */
+  .custom-checkbox input[type="checkbox"] {
+    display: none;
+  }
+  
+  /* Let's Create a custom checkmark box */
+  .custom-checkbox .checkmark {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    border: 1px solid var(--Light-gray);
+    border-radius: .34rem;
+  }
+  
+  /* On checkbox checked, let's change the background color of the checkmark */
+  .custom-checkbox input[type="checkbox"]:checked + .checkmark {
+    background-color: var(--Purplish-blue);
+    border-color: var(--Purplish-blue); 
+  }
+  
+  /* Now we Add a checkmark symbol inside the custom checkbox */
+  .custom-checkbox .checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Let's Show the checkmark symbol when the checkbox is checked */
+  .custom-checkbox input[type="checkbox"]:checked + .checkmark::after {
+    display: block;
+    left: 6px;
+    top: 3px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+ .service-item{
+    cursor: pointer;
+ } 
+ .service-item.active{
+    border: 1px solid var(--Purplish-blue);
+ }

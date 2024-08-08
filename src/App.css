@@ -1,5 +1,38 @@
 /* COMMON STYLES!!!!!! */
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  max-width: 450px;
+  width: 100%;
+  height: 100%;
+}
+.step-header-container{
+  display: flex;
+  flex-direction: column; 
+  margin-top: 5.6rem;
+}
+.title{
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.parag{
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+form{
+  margin-top: 3.8rem;
+  width: 100%;
 
+}
+.field.button{
+  width: 100%;
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
 .btn{
   max-width: 123px;
   width: 100%;
@@ -11,6 +44,10 @@
   background-color:var(--Marine-blue);
   border: none;
   border-radius: .64rem;
+}
 
-
+.return{
+  background: none;
+  border: none;
+  font-size: 1.6rem;
 }

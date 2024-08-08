@@ -7,7 +7,7 @@
 --Purplish-blue: hsl(243, 100%, 62%);
 --Pastel-blue: hsl(228, 100%, 84%);
 --Light-blue: hsl(206, 94%, 87%);
---Strawberry-red: hsl(354, 84%, 57%);
+--Strawberry-red: hsla(354, 84%, 57%, 0.574);
 
 /* ### Neutral */
 
@@ -29,21 +29,16 @@ html {
 body {
   width: 100%;
   font-family: "Ubuntu", sans-serif;
-  color: rgb(255, 253, 253)
+  color: red
 
 }
 
-p,a,li {
+p{
   font-size: 1.6rem;
   font-weight: 300;
 }
-a,li{
-  text-decoration: none;
-  list-style: none;
-  transition: all 0.3s ease-in;
 
-}
-img,button,a,li{
+img,button{
   cursor: pointer;
 }
 .outer-container {

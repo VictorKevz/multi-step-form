@@ -1,29 +1,23 @@
 import React, { useState } from "react";
 import "../css/step1.css";
 
-function Step1() {
-  const [step1Data, setStep1Data] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-  });
+function Step1({ incrementStep, formData, setFormData }) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneNumberRegex = /^\+?\d{1,3}(?:\s\d{1,4})*$/;
+  const phoneNumberRegex = /^\+?\d{1,3}(?:\s?\d{1,4})*$/;
 
   const [isValid, setValid] = useState({
     name: true,
     email: true,
     phoneNumber: true,
   });
-  const[showStep2, setShowStep2] = useState(false)
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setStep1Data((prevVal) => ({
+    setFormData((prevVal) => ({
       ...prevVal,
       [name]: value,
     }));
 
-    // Instantly clear errors
     setValid((prevErr) => ({
       ...prevErr,
       [name]: true,
@@ -33,29 +27,29 @@ function Step1() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let newFormValid = { ...isValid };
-    
-    if (!step1Data.name) {
-        newFormValid.name = false;
+
+    if (!formData.name) {
+      newFormValid.name = false;
     }
-    if (!step1Data.email || !emailRegex.test(step1Data.email)) {
-        newFormValid.email = false;
+    if (!formData.email || !emailRegex.test(formData.email)) {
+      newFormValid.email = false;
     }
-    if (!step1Data.phoneNumber || !phoneNumberRegex.test(step1Data.phoneNumber)) {
-        newFormValid.phoneNumber = false;
+    if (!formData.phoneNumber || !phoneNumberRegex.test(formData.phoneNumber)) {
+      newFormValid.phoneNumber = false;
     }
 
     if (newFormValid.name && newFormValid.email && newFormValid.phoneNumber) {
-        setShowStep2(true)
+      incrementStep();
     }
 
     setValid(newFormValid);
-};
+  };
 
   return (
-    <section className="step1-wrapper">
-      <header className={`step1-header-container`}>
-        <h1 className="step1-title">Personal info</h1>
-        <p className="step1-parag">
+    <section className="step1 wrapper">
+      <header className={`step1 step-header-container`}>
+        <h1 className="step1 title">Personal info</h1>
+        <p className="step1 parag">
           Please provide your name, email address, and phone number.
         </p>
       </header>
@@ -69,10 +63,9 @@ function Step1() {
               </span>
             )}
           </div>
-
           <input
             type="text"
-            value={step1Data.name}
+            value={formData.name}
             onChange={handleChange}
             name="name"
             id="userName"
@@ -91,7 +84,7 @@ function Step1() {
           </div>
           <input
             type="text"
-            value={step1Data.email}
+            value={formData.email}
             onChange={handleChange}
             name="email"
             id="userEmail"
@@ -108,10 +101,9 @@ function Step1() {
               </span>
             )}
           </div>
-
           <input
             type="text"
-            value={step1Data.phoneNumber}
+            value={formData.phoneNumber}
             onChange={handleChange}
             name="phoneNumber"
             id="userNum"
@@ -119,7 +111,7 @@ function Step1() {
             placeholder="e.g. +1 234 567 890"
           />
         </div>
-        <div className="field">
+        <div className="field button step1">
           <button className="btn step1" type="submit">
             Next Step
           </button>
