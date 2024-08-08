@@ -68,6 +68,7 @@ function Step2({ formData, setFormData, decrementStep, incrementStep }) {
                         ? `$${item.price.yearly.yearlyPrice}/yr`
                         : `$${item.price.monthly.monthlyPrice}/mo`}
                     </p>{" "}
+                    {isToggled && <p className="discount">{item.price.yearly.discount}</p>}
                   </div>
                 </div>
               </label>

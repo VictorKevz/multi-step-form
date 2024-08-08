@@ -1,4 +1,15 @@
 /* COMMON STYLES!!!!!! */
+h1,h2,h3,label{
+  color: var(--Marine-blue);
+}
+p{
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+
+img,button{
+  cursor: pointer;
+}
 .wrapper{
   display: flex;
   flex-direction: column;
@@ -9,25 +20,27 @@
 .step-header-container{
   display: flex;
   flex-direction: column; 
-  margin-top: 5.6rem;
+  margin-top: 4rem;
 }
 .title{
-  font-size: 3rem;
+  font-size: 3.1rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  letter-spacing: 0.058rem;
 }
 .parag{
   font-size: 1.6rem;
   font-weight: 400;
+  margin-top: 1.3rem;
 }
 form{
-  margin-top: 3.8rem;
+  margin-top: 4rem;
   width: 100%;
+  
 
 }
 .field.button{
   width: 100%;
-  margin-top: 8rem;
+  margin-top: 6.9rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -44,6 +57,9 @@ form{
   background-color:var(--Marine-blue);
   border: none;
   border-radius: .64rem;
+  font-size: 1.63rem;
+  font-weight: 400;
+
 }
 
 .return{

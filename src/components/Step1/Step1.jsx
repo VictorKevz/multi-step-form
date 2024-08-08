@@ -53,7 +53,7 @@ function Step1({ incrementStep, formData, setFormData }) {
           Please provide your name, email address, and phone number.
         </p>
       </header>
-      <form onSubmit={handleSubmit} className="step1-form">
+      <form onSubmit={handleSubmit} autocomplete="off" className="step1-form">
         <div className="field">
           <div className="error-label-field">
             <label htmlFor="userName">Name</label>
