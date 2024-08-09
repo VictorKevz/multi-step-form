@@ -53,7 +53,7 @@ function Step1({ incrementStep, formData, setFormData }) {
     <AnimatePresence mode="wait">
     <motion.section 
     className="step1 wrapper"
-    variants={nextStep}
+    // variants={nextStep}
       initial="hidden"
       animate="visible"
     >

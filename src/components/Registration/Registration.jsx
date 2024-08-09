@@ -61,7 +61,7 @@ function Registration() {
   return (
     <motion.div
       className="reg-wrapper"
-      variants={entryRegistration}
+      // variants={entryRegistration}
       initial="hidden"
       animate="visible"
     >
@@ -69,7 +69,7 @@ function Registration() {
         <aside className="header-container">
           <div className="steps-container">
             {regData.map((step) => (
-              <ul key={step.id} className="step-item">
+              <div key={step.id} className="step-item">
                 <li
                   className={`step-num ${
                     activeStep === step.id ? "active-step" : ""
@@ -81,7 +81,7 @@ function Registration() {
                   <p className={`step`}>{`Step ${step.id}`}</p>
                   <p className="step-title">{step.title}</p>
                 </article>
-              </ul>
+              </div>
             ))}
           </div>
         </aside>
