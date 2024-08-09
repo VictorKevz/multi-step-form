@@ -43,7 +43,13 @@ input::placeholder{
     justify-content: flex-end;
 }
 .error-message {
-  color: rgb(243, 90, 90);
+  color: var(--Strawberry-red);
+  font-weight: 500;
+  font-size: 1.4rem;
+  margin-right: 5px;
+}
+.error-border{
+  border-color: var(--Strawberry-red);
 }
 .step1-input:focus{
   outline: none;

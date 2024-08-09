@@ -27,8 +27,7 @@
     align-items: center;
     gap: 0;
     border-radius: 0;
-    background-color: #eff5fe;
-  }
+    background-color:hsl(212, 70%, 5%)  }
   .header-container {
     max-width: 100%;
     background-image: url("./assets/images/bg-sidebar-mobile.svg");

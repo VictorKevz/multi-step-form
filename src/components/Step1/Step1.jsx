@@ -83,7 +83,7 @@ function Step1({ incrementStep, formData, setFormData }) {
             onChange={handleChange}
             name="name"
             id="userName"
-            className="step1-input"
+            className={`step1-input ${!isValid.name && "error-border"}`}
             placeholder="e.g. Stephen King"
             aria-invalid={!isValid.name}
           />
@@ -107,7 +107,7 @@ function Step1({ incrementStep, formData, setFormData }) {
             onChange={handleChange}
             name="email"
             id="userEmail"
-            className="step1-input"
+            className={`step1-input ${!isValid.email && "error-border"}`}
             placeholder="e.g. stephenking@lorem.com"
             aria-invalid={!isValid.email}
           />
@@ -131,7 +131,7 @@ function Step1({ incrementStep, formData, setFormData }) {
             onChange={handleChange}
             name="phoneNumber"
             id="userNum"
-            className="step1-input"
+            className={`step1-input ${!isValid.phoneNumber && "error-border"}`}
             placeholder="e.g. +1 234 567 890"
             aria-invalid={!isValid.phoneNumber}
           />

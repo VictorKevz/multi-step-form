@@ -31,6 +31,7 @@ body {
   width: 100%;
   font-family: "Ubuntu", sans-serif;
   background-color: #eff5fe;
+  background-color:hsl(212, 70%, 5%) ;
   color: var(--Cool-gray);
 }
 
