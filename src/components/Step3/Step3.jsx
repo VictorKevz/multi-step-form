@@ -1,6 +1,8 @@
 import React from "react";
 import { step3Data } from "./step3Data";
 import "../css/step3.css";
+import { AnimatePresence, motion } from "framer-motion";
+import { nextStep } from "../../Variants";
 
 function Step3({ formData, setFormData, decrementStep, incrementStep }) {
   const isToggled = formData.isToggled;
@@ -12,12 +14,20 @@ function Step3({ formData, setFormData, decrementStep, incrementStep }) {
       [name]: checked,
     }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     incrementStep();
   };
+
   return (
-    <section className="step3 wrapper">
+    <AnimatePresence mode="wait">
+    <motion.section 
+    className="step3 wrapper"
+    variants={nextStep}
+      initial="hidden"
+      animate="visible"
+    >
       <header className={`step3 step-header-container`}>
         <h2 className="step3 title">Pick add-ons</h2>
         <p className="step3 parag">
@@ -25,9 +35,14 @@ function Step3({ formData, setFormData, decrementStep, incrementStep }) {
         </p>
       </header>
       <form className="step3-form" onSubmit={handleSubmit}>
-        <div className="field step3">
+        <fieldset className="field step3 visually-hidden" aria-labelledby="step3Title">
+          <legend id="step3Title" className="visually-hidden">Choose additional services</legend>
           {step3Data.map((item) => (
-            <label key={item.id} htmlFor={item.id} className={`service-item ${formData[item.name] && "active"}`}>
+            <label 
+              key={item.id} 
+              htmlFor={item.id} 
+              className={`service-item ${formData[item.name] && "active"}`}
+            >
               <div className="box-info-wrapper">
                 <div className="custom-checkbox">
                   <input
@@ -37,15 +52,25 @@ function Step3({ formData, setFormData, decrementStep, incrementStep }) {
                     onChange={handleCheckboxChange}
                     id={item.id}
                     className="step3-checkbox"
+                    aria-labelledby={`${item.id}-name ${item.id}-price`}
+                    aria-describedby={`${item.id}-description`}
                   />
                   <span className="checkmark"></span>
                 </div>
                 <div className="text-wrapper">
-                  <h3 className="service">{item.service}</h3>
-                  <p className="description">{item.description}</p>
+                  <h3 id={`${item.id}-name`} className="service-name">
+                    {item.service}
+                  </h3>
+                  <p id={`${item.id}-description`} className="service-description">
+                    {item.description}
+                  </p>
                 </div>
               </div>
-              <p className="service-price">
+              <p 
+                id={`${item.id}-price`} 
+                className="service-price"
+                aria-live="polite"
+              >
                 {isToggled
                   ? `+$${item.price.yearly}/yr`
                   : `+$${item.price.monthly}/mo`}
@@ -57,6 +82,7 @@ function Step3({ formData, setFormData, decrementStep, incrementStep }) {
               className="return step3"
               type="button"
               onClick={decrementStep}
+              aria-label="Go back to the previous step"
             >
               Go Back
             </button>
@@ -64,9 +90,11 @@ function Step3({ formData, setFormData, decrementStep, incrementStep }) {
               Next Step
             </button>
           </div>
-        </div>
+        </fieldset>
       </form>
-    </section>
+    </motion.section>
+    </AnimatePresence>
   );
 }
+
 export default Step3;

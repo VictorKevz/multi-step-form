@@ -1,5 +1,4 @@
 
-
 .field.step3{
     width: 100%;
     display: flex;
@@ -13,7 +12,7 @@
     justify-content: space-between;
     min-height: 81px;
     border: 1px solid var(--Light-gray);
-    border-radius: 1rem;
+    border-radius: .8rem;
     padding: 0 2.2rem;
 }
 .box-info-wrapper{
@@ -74,4 +73,19 @@
  } 
  .service-item.active{
     border: 1px solid var(--Purplish-blue);
+ }
+ .service-name{
+font-weight: 500;
+font-size: 1.6rem;
+ }
+ .service-description{
+  font-size: 1.43rem;
+  margin-top: 5px;
+ }
+ .service-price{
+margin-top: 3px;
+margin-left: 2px;
+  font-size: 1.5rem;
+  color: var(--Purplish-blue);
+
  }

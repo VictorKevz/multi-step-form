@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { entryRegistration } from "../../Variants";
 import { regData } from "./regData";
 import "../css/registration.css";
 import Step1 from "../Step1/Step1";
@@ -30,17 +32,15 @@ function Registration() {
   const decrementStep = () => {
     setActiveStep((prevStep) => (prevStep === 1 ? 1 : prevStep - 1));
   };
-// Change subscription by changing the step
-const changeStep = ()=>{
-  setActiveStep(2);
- 
-}
+  // Change subscription by changing the step
+  const changeStep = () => {
+    setActiveStep(2);
+  };
   // Show step 5 if step 4 is valid
   const showStep5 = () => {
     setConfirm(true);
     // We need to icrement the step to 5
     setActiveStep((prevStep) => (prevStep === 5 ? 5 : prevStep + 1));
-
   };
   // Close Step 5 and reset state to step 1
   const closeStep5 = () => {
@@ -59,7 +59,12 @@ const changeStep = ()=>{
   };
 
   return (
-    <div className="reg-wrapper">
+    <motion.div
+      className="reg-wrapper"
+      variants={entryRegistration}
+      initial="hidden"
+      animate="visible"
+    >
       <div className={`reg-container`}>
         <aside className="header-container">
           <div className="steps-container">
@@ -80,41 +85,43 @@ const changeStep = ()=>{
             ))}
           </div>
         </aside>
-        {activeStep === 1 && (
-          <Step1
-            incrementStep={incrementStep}
-            formData={formData}
-            setFormData={setFormData}
-          />
-        )}
-        {activeStep === 2 && (
-          <Step2
-            incrementStep={incrementStep}
-            decrementStep={decrementStep}
-            formData={formData}
-            setFormData={setFormData}
-          />
-        )}
-        {activeStep === 3 && (
-          <Step3
-            incrementStep={incrementStep}
-            decrementStep={decrementStep}
-            formData={formData}
-            setFormData={setFormData}
-          />
-        )}
-        {activeStep === 4 && (
-          <Step4
-            decrementStep={decrementStep}
-            formData={formData}
-            setFormData={setFormData}
-            changeStep={changeStep}
-            onShow={showStep5}
-          />
-        )}
-        {activeStep === 5 && isConfirm && <Step5 onClose={closeStep5} />}
+        <div className="steps-wrapper">
+          {activeStep === 1 && (
+            <Step1
+              incrementStep={incrementStep}
+              formData={formData}
+              setFormData={setFormData}
+            />
+          )}
+          {activeStep === 2 && (
+            <Step2
+              incrementStep={incrementStep}
+              decrementStep={decrementStep}
+              formData={formData}
+              setFormData={setFormData}
+            />
+          )}
+          {activeStep === 3 && (
+            <Step3
+              incrementStep={incrementStep}
+              decrementStep={decrementStep}
+              formData={formData}
+              setFormData={setFormData}
+            />
+          )}
+          {activeStep === 4 && (
+            <Step4
+              decrementStep={decrementStep}
+              formData={formData}
+              setFormData={setFormData}
+              changeStep={changeStep}
+              onShow={showStep5}
+            />
+          )}
+          {activeStep === 5 && isConfirm && <Step5 onClose={closeStep5} />}
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

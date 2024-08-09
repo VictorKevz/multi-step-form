@@ -5,27 +5,29 @@
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 1.8rem;
-}
-.field{
     width: 100%;
+}
+.field.step2{
+    width: 100%;
+    
 }
 .sub-label{
     width: 100%;
     min-height: 77px;
     border: 1px solid var(--Light-gray);
     cursor: pointer;
-    padding: 1.5rem;
-    border-radius: 1rem;
+    padding: 1rem 1.5rem 1.6rem 1.5rem ;
+    border-radius: .8rem;
 }
 .sub-label:hover{
-    border: 1px solid var(--Pastel-blue);
+    border: 1px solid var(--Purplish-blue);
 }
 input[type = "radio"]{
     appearance: none;
 }
 
 .sub-label.active{
-    border: 1px solid var(--Pastel-blue); 
+    border: 1px solid var(--Purplish-blue); 
 }
 .content-wrapper{
     width: 100%;
@@ -33,8 +35,20 @@ input[type = "radio"]{
     flex-direction: column;
     gap:4rem
 }
-
-
+.sub-title{
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.step2-price{
+  font-size: 1.4rem;
+  margin-top: 5px;
+}
+.discount{
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--Marine-blue);
+  margin-top: .9rem;
+}
 /* Toggle Switch styles */
 .switch-wrapper{
     grid-column: span 3;
@@ -44,17 +58,23 @@ input[type = "radio"]{
     justify-content: center;
     align-items: center;
     border-radius: 1rem;
-    margin-top: 3.5rem;
+    margin-top: 1.5rem;
 
 
 }
 .switch-container {
     display: flex;
     align-items: center;
-    gap: 2.2rem;
+    gap: 1.5rem;
   }
-  
-  
+  .toggle-text{
+    color: var(--Marine-blue);
+    font-weight: 500;
+    font-size: 1.4rem;
+  }
+  .toggle-text.monthly{
+    margin-left: -1.2rem;
+  }
   .step2-checkbox[type="checkbox"] {
     opacity: 0;
     width: 0;
@@ -65,8 +85,10 @@ input[type = "radio"]{
   .switch {
     position: relative;
     display: inline-block;
-    width: 50px;
-    height: 24px;
+    width: 38px;
+    height: 18px;
+    margin-right: 1rem;
+    margin-left: 1rem;
   }
   
   .slider {
@@ -84,8 +106,8 @@ input[type = "radio"]{
   .slider:before {
     position: absolute;
     content: "";
-    height: 18px;
-    width: 18px;
+    height: 12px;
+    width: 12px;
     left: 3px;
     bottom: 3px;
     background-color: white;
@@ -99,7 +121,7 @@ input[type = "radio"]{
   }
   
   input:checked + .slider:before {
-    transform: translateX(26px);
+    transform: translateX(18px);
   }
   
   /* Rounded slider */
@@ -110,3 +132,7 @@ input[type = "radio"]{
   .slider.round:before {
     border-radius: 50%;
   }
+  .field.button.step2{
+    margin-top: 11.6rem;
+  }
+

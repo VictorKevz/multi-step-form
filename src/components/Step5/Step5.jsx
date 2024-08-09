@@ -1,11 +1,19 @@
 import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { step5 } from "../../Variants";
 import iconThankYou from "../../assets/images/icon-thank-you.svg";
 import "../css/step5.css";
 
 
 function Step5({ onClose }) {
   return (
-    <div className={`step5 wrapper`}>
+    <AnimatePresence mode="wait">
+    <motion.div 
+    className={`step5 wrapper`}
+    variants={step5}
+        initial="hidden"
+        animate="visible"
+    >
       <div className={`step5-container`}>
         <img src={iconThankYou} alt="Icon Thank You" className="thanks-icon" />
         <h2 className={`step5 title`}>Thank You!</h2>
@@ -19,7 +27,8 @@ function Step5({ onClose }) {
           Continue
         </button>
       </div>
-    </div>
+    </motion.div>
+    </AnimatePresence>
   );
 }
 

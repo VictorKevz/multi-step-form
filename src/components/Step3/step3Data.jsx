@@ -22,7 +22,7 @@ export const step3Data = [
     },
     {
         id:"custom",
-        service:"Customizable Profile",
+        service:"Customizable profile",
         description:"Custom theme on your profile",
         price:{
             monthly:2,

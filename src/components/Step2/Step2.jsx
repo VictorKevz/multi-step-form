@@ -1,6 +1,8 @@
 import React from "react";
 import "../css/step2.css";
 import { step2Data } from "./step2Data";
+import { AnimatePresence, motion } from "framer-motion";
+import { nextStep } from "../../Variants";
 
 function Step2({ formData, setFormData, decrementStep, incrementStep }) {
   const subscription = formData.subscription || "Arcade";
@@ -26,7 +28,13 @@ function Step2({ formData, setFormData, decrementStep, incrementStep }) {
   };
 
   return (
-    <section className="step2 wrapper">
+    <AnimatePresence mode="wait">
+    <motion.section 
+    className="step2 wrapper"
+    variants={nextStep}
+      initial="hidden"
+      animate="visible"
+    >
       <header className={`step2 step-header-container`}>
         <h2 className="step2 title">Select your plan</h2>
         <p className="step2 parag">
@@ -35,24 +43,28 @@ function Step2({ formData, setFormData, decrementStep, incrementStep }) {
       </header>
 
       <form onSubmit={handleSubmit} className="step2-form">
-        <div className="field-wrapper">
+        <fieldset className="field-wrapper">
+          <legend className="visually-hidden">
+            Choose a subscription plan
+          </legend>
           {step2Data.map((item) => (
-            <div key={item.id} className="field">
+            <div key={item.id} className="field step2">
+              <input
+                type="radio"
+                value={item.title}
+                checked={subscription === item.title}
+                onChange={handleChange}
+                name="subscription"
+                id={item.title}
+                className="subscription"
+                aria-labelledby={`${item.title}-label ${item.title}-price`}
+              />
               <label
                 className={`sub-label ${
                   subscription === item.title && "active"
                 } `}
                 htmlFor={item.title}
               >
-                <input
-                  type="radio"
-                  value={item.title}
-                  checked={subscription === `${item.title}`}
-                  onChange={handleChange}
-                  name="subscription"
-                  id={item.title}
-                  className="subscription"
-                />
                 <div className="content-wrapper">
                   <div className="icon-wrapper">
                     <img
@@ -61,14 +73,21 @@ function Step2({ formData, setFormData, decrementStep, incrementStep }) {
                       className="sub-icon"
                     />
                   </div>
-                  <div className="text-wrapper">
-                    <h3 className="sub-title">{item.title}</h3>
-                    <p className="price">
+                  <div className="step2-text-wrapper">
+                    <h3 id={`${item.title}-label`} className="sub-title">
+                      {item.title}
+                    </h3>
+                    <p
+                      id={`${item.title}-price`}
+                      className="step2-price"
+                    >
                       {isToggled
                         ? `$${item.price.yearly.yearlyPrice}/yr`
                         : `$${item.price.monthly.monthlyPrice}/mo`}
-                    </p>{" "}
-                    {isToggled && <p className="discount">{item.price.yearly.discount}</p>}
+                    </p>
+                    {isToggled && (
+                      <p className="discount">{item.price.yearly.discount}</p>
+                    )}
                   </div>
                 </div>
               </label>
@@ -76,33 +95,40 @@ function Step2({ formData, setFormData, decrementStep, incrementStep }) {
           ))}
           <div className="field switch-wrapper">
             <div className="switch-container">
-              <span>Monthly</span>
-              <label className="switch" htmlFor="myCheckbox">
+              <span className="toggle-text monthly">Monthly</span>
+              <label className="switch" htmlFor="billingToggle">
                 <input
                   type="checkbox"
                   onChange={switchSubscription}
-                  id="myCheckbox"
-                  aria-label="Switch Prices"
+                  id="billingToggle"
+                  aria-label="Switch between Monthly and Yearly billing"
+                  aria-checked={isToggled}
                   checked={isToggled}
                   className="step2-checkbox"
                 />
                 <span className="slider round"></span>
               </label>
-              <span>Yearly</span>
+              <span className="toggle-text yearly">Yearly</span>
             </div>
           </div>
-        </div>
+        </fieldset>
 
-        <div className="field button">
-        <button className="return step2" type="button" onClick={decrementStep}>
+        <div className="field button step2">
+          <button
+            className="return step2"
+            type="button"
+            onClick={decrementStep}
+            aria-label="Go back to the previous step"
+          >
             Go Back
           </button>
           <button className="btn step2" type="submit">
             Next Step
-          </button>         
+          </button>
         </div>
       </form>
-    </section>
+    </motion.section>
+    </AnimatePresence>
   );
 }
 

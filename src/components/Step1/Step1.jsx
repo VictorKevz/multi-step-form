@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../css/step1.css";
-
+import { AnimatePresence, motion } from "framer-motion";
+import { nextStep } from "../../Variants";
 function Step1({ incrementStep, formData, setFormData }) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneNumberRegex = /^\+?\d{1,3}(?:\s?\d{1,4})*$/;
@@ -30,12 +31,15 @@ function Step1({ incrementStep, formData, setFormData }) {
 
     if (!formData.name) {
       newFormValid.name = false;
+      document.getElementById('userName').focus();
     }
     if (!formData.email || !emailRegex.test(formData.email)) {
       newFormValid.email = false;
+      if (newFormValid.name) document.getElementById('userEmail').focus();
     }
     if (!formData.phoneNumber || !phoneNumberRegex.test(formData.phoneNumber)) {
       newFormValid.phoneNumber = false;
+      if (newFormValid.name && newFormValid.email) document.getElementById('userNum').focus();
     }
 
     if (newFormValid.name && newFormValid.email && newFormValid.phoneNumber) {
@@ -46,19 +50,29 @@ function Step1({ incrementStep, formData, setFormData }) {
   };
 
   return (
-    <section className="step1 wrapper">
+    <AnimatePresence mode="wait">
+    <motion.section 
+    className="step1 wrapper"
+    variants={nextStep}
+      initial="hidden"
+      animate="visible"
+    >
       <header className={`step1 step-header-container`}>
         <h1 className="step1 title">Personal info</h1>
         <p className="step1 parag">
           Please provide your name, email address, and phone number.
         </p>
       </header>
-      <form onSubmit={handleSubmit} autocomplete="off" className="step1-form">
+      <form onSubmit={handleSubmit} autoComplete="off" className="step1-form">
         <div className="field">
           <div className="error-label-field">
             <label htmlFor="userName">Name</label>
             {!isValid.name && (
-              <span className="error-message">
+              <span
+                className="error-message"
+                role="alert"
+                aria-live="assertive"
+              >
                 Please enter a valid user name{" "}
               </span>
             )}
@@ -71,13 +85,18 @@ function Step1({ incrementStep, formData, setFormData }) {
             id="userName"
             className="step1-input"
             placeholder="e.g. Stephen King"
+            aria-invalid={!isValid.name}
           />
         </div>
         <div className="field">
           <div className="error-label-field">
             <label htmlFor="userEmail">Email Address</label>
             {!isValid.email && (
-              <span className="error-message">
+              <span
+                className="error-message"
+                role="alert"
+                aria-live="assertive"
+              >
                 Please enter a valid email address{" "}
               </span>
             )}
@@ -90,13 +109,18 @@ function Step1({ incrementStep, formData, setFormData }) {
             id="userEmail"
             className="step1-input"
             placeholder="e.g. stephenking@lorem.com"
+            aria-invalid={!isValid.email}
           />
         </div>
         <div className="field">
           <div className="error-label-field">
             <label htmlFor="userNum">Phone Number</label>
             {!isValid.phoneNumber && (
-              <span className="error-message">
+              <span
+                className="error-message"
+                role="alert"
+                aria-live="assertive"
+              >
                 Please enter a valid phone number{" "}
               </span>
             )}
@@ -109,6 +133,7 @@ function Step1({ incrementStep, formData, setFormData }) {
             id="userNum"
             className="step1-input"
             placeholder="e.g. +1 234 567 890"
+            aria-invalid={!isValid.phoneNumber}
           />
         </div>
         <div className="field button step1">
@@ -117,7 +142,8 @@ function Step1({ incrementStep, formData, setFormData }) {
           </button>
         </div>
       </form>
-    </section>
+    </motion.section>
+    </AnimatePresence>
   );
 }
 
